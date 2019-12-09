@@ -1,15 +1,18 @@
-# Basic Rust project template
+# {{project-name}}
 
-This will ask you for the name of the project, then create a directory with
-that name.
-
-~~~
-❯ cargo install kickstart
-❯ kickstart https://github.com/danielparks/simple-template.rs
-~~~
+Generated from template https://github.com/danielparks/simple-template.rs with
+[cargo-generate](https://github.com/ashleygwilliams/cargo-generate).
 
 ## License
 
-I donate this to the public domain. See the [Unlicense].
+This project dual-licensed under the Apache 2 and MIT licenses. You may choose
+to use either.
 
-[Unlicense]: https://choosealicense.com/licenses/unlicense/
+ * [Apache License, Version 2.0](LICENSE-APACHE)
+ * [MIT license](LICENSE-MIT)
+
+### Contributions
+
+Unless you explicitly state otherwise, any contribution you submit as defined
+in the Apache 2.0 license shall be dual licensed as above, without any
+additional terms or conditions.

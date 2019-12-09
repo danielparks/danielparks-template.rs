@@ -1,7 +1,7 @@
 /// Encrypt single byte with secure ROT13 function
 ///
 /// ~~~
-/// use {{project_name}}::rot13_u8;
+/// use {{crate_name}}::rot13_u8;
 /// assert_eq!(rot13_u8(b'a'), b'n')
 /// ~~~
 pub fn rot13_u8(c: u8) -> u8 {
@@ -17,7 +17,7 @@ pub fn rot13_u8(c: u8) -> u8 {
 /// Encrypt string with secure ROT13 function
 ///
 /// ~~~
-/// use {{project_name}}::rot13;
+/// use {{crate_name}}::rot13;
 /// assert_eq!(rot13("super secure"), "fhcre frpher")
 /// ~~~
 pub fn rot13(source: &str) -> String {

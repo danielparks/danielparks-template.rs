@@ -2,7 +2,7 @@
 
 extern crate test;
 
-use {{project_name}}::*;
+use {{crate_name}}::*;
 
 #[bench]
 fn rot13_basic(bench: &mut test::Bencher) {
