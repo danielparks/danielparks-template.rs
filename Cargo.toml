@@ -2,8 +2,14 @@
 name = "{{crate_name}}"
 version = "0.1.0"
 authors = ["{{authors}}"]
-description = "Project description"
+description = ""
+homepage = "https://github.com/danielparks/{{crate_name}}"
+repository = "https://github.com/danielparks/{{crate_name}}"
+readme = "README.md"
+keywords = []
+categories = [] # https://crates.io/category_slugs
 license = "MIT OR Apache-2.0"
+maintenance = { status = "actively-developed" }
 edition = "2018"
 
 [build-dependencies]
