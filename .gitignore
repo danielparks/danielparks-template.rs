@@ -1,5 +1,5 @@
 /target
 **/*.rs.bk
-{% if crate_type == "lib" %}
+{% if crate_type == "lib" -%}
 Cargo.lock
-{% endif %}
+{% endif -%}
