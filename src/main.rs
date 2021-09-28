@@ -7,6 +7,7 @@ use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 struct Params {
+    /// Verbosity (may be repeated up to three times)
     #[structopt(short, long, parse(from_occurrences))]
     verbose: u8,
 }
