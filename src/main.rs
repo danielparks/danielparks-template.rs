@@ -1,20 +1,20 @@
+use clap::Parser;
 use simplelog::{
     ColorChoice, CombinedLogger, Config, ConfigBuilder, LevelFilter,
     TermLogger, TerminalMode,
 };
 use std::process::exit;
-use structopt::StructOpt;
 
-#[derive(Debug, StructOpt)]
+#[derive(Debug, clap::Parser)]
 struct Params {
     /// Verbosity (may be repeated up to three times)
-    #[structopt(short, long, parse(from_occurrences))]
+    #[clap(short, long, parse(from_occurrences))]
     verbose: u8,
 }
 
 fn main() {
     smol::block_on(async {
-        if let Err(error) = cli(Params::from_args()).await {
+        if let Err(error) = cli(Params::parse()).await {
             eprintln!("Error: {:#}", error);
             exit(1);
         }
