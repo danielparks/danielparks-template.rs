@@ -6,6 +6,7 @@ use simplelog::{
 use std::process::exit;
 
 #[derive(Debug, clap::Parser)]
+#[clap(version, about)]
 struct Params {
     /// Verbosity (may be repeated up to three times)
     #[clap(short, long, parse(from_occurrences))]
