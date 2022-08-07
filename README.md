@@ -1,7 +1,7 @@
 # {{project-name}}
 
-Generated from template https://github.com/danielparks/simple-template.rs with
-[cargo-generate](https://github.com/ashleygwilliams/cargo-generate).
+Generated from template https://github.com/danielparks/danielparks-template.rs
+with [cargo-generate](https://github.com/ashleygwilliams/cargo-generate).
 
 ## License
 
