@@ -1,3 +1,4 @@
+use anyhow::bail;
 use clap::Parser;
 use simplelog::{
     ColorChoice, CombinedLogger, Config, ConfigBuilder, LevelFilter,
@@ -24,7 +25,8 @@ fn main() {
 
 async fn cli(params: Params) -> anyhow::Result<()> {
     let filter = match params.verbose {
-        3.. => LevelFilter::Trace,
+        4.. => bail!("-v is only allowed up to 3 times."),
+        3 => LevelFilter::Trace,
         2 => LevelFilter::Debug,
         1 => LevelFilter::Info,
         0 => LevelFilter::Warn,
