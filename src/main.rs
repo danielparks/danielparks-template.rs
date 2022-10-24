@@ -9,7 +9,7 @@ use std::process::exit;
 #[clap(version, about)]
 struct Params {
     /// Verbosity (may be repeated up to three times)
-    #[clap(short, long, parse(from_occurrences))]
+    #[clap(short, long, action = clap::ArgAction::Count)]
     verbose: u8,
 }
 
