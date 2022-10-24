@@ -58,7 +58,12 @@ fn new_term_logger(level: LevelFilter, config: Config) -> Box<TermLogger> {
 
 fn new_logger_config() -> ConfigBuilder {
     let mut builder = ConfigBuilder::new();
-    builder.set_time_to_local(true);
     builder.set_target_level(LevelFilter::Error);
+
+    // FIXME: If this fails it will just print the time in UTC. That might be a
+    // little surprising, so this should probably warn the user... except that
+    // we haven’t finished setting up logging.
+    let _ = builder.set_time_offset_to_local();
+
     builder
 }
