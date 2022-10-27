@@ -14,9 +14,9 @@ cd
 echo -n 'Keep temporary directory "'"$TEST_DIR"'" [yN]? '
 read yn
 case "$yn" in
-  [yY]*) echo Keeping directory. ;;
-  *)
-    echo Removing directory.
-    rm -rf -- "$TEST_DIR"
-  ;;
+	[yY]*) echo Keeping directory. ;;
+	*)
+		echo Removing directory.
+		rm -rf -- "$TEST_DIR"
+	;;
 esac
