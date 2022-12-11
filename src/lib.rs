@@ -31,12 +31,20 @@ pub fn rot13(source: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use assertify::testify;
 
-    testify!(byte_tilde, rot13_u8(b'~') == b'~');
-    testify!(byte_lower_a, rot13_u8(b'a') == b'a' + 13);
-    testify!(byte_upper_a, rot13_u8(b'A') == b'A' + 13);
-    testify!(byte_lower_z, rot13_u8(b'z') == b'a' + 12);
-    testify!(byte_upper_z, rot13_u8(b'Z') == b'A' + 12);
-    testify!(str_abc, rot13(".abc NOP") == ".nop ABC");
+    macro_rules! test {
+        ($name:ident, $($test:tt)+) => {
+            #[test]
+            fn $name() {
+                ::assert2::assert!($($test)+);
+            }
+        };
+    }
+
+    test!(byte_tilde, rot13_u8(b'~') == b'~');
+    test!(byte_lower_a, rot13_u8(b'a') == b'a' + 13);
+    test!(byte_upper_a, rot13_u8(b'A') == b'A' + 13);
+    test!(byte_lower_z, rot13_u8(b'z') == b'a' + 12);
+    test!(byte_upper_z, rot13_u8(b'Z') == b'A' + 12);
+    test!(str_abc, rot13(".abc NOP") == ".nop ABC");
 }
