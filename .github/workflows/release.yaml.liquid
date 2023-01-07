@@ -1,3 +1,4 @@
+{% raw -%}
 # Mostly copied from https://github.com/taiki-e/cargo-hack/blob/72a9fc95377c453a18026329577c59fa60bfa737/.github/workflows/release.yml
 name: Release
 
@@ -43,8 +44,9 @@ jobs:
       - run: cargo publish
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+{% endraw -%}
 
-{% if crate_type == "bin" -%}
+{% if crate_type == "bin" %}{% raw %}
   upload-assets:
     name: ${{ matrix.target }}
     if: github.repository_owner == 'danielparks'
@@ -96,4 +98,4 @@ jobs:
           tar: all
           zip: windows
           token: ${{ secrets.GITHUB_TOKEN }}
-{% endif -%}
+{% endraw %}{% endif -%}
