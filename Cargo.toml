@@ -12,9 +12,6 @@ categories = [] # https://crates.io/category_slugs
 license = "MIT OR Apache-2.0"
 edition = "2021"
 
-[badges]
-maintenance = { status = "actively-developed" }
-
 {% if crate_type == "bin" -%}
 [dependencies]
 anyhow = "1.0.44"
