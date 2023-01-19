@@ -5,7 +5,9 @@ authors = ["Daniel Parks <oss-{{project-name}}@demonhorse.org>"]
 description = ""
 homepage = "https://github.com/danielparks/{{project-name}}"
 repository = "https://github.com/danielparks/{{project-name}}"
+{% if crate_type == "bin" -%}
 documentation = "https://github.com/danielparks/{{project-name}}"
+{% endif -%}
 readme = "README.md"
 keywords = []
 categories = [] # https://crates.io/category_slugs
