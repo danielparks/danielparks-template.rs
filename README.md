@@ -3,6 +3,7 @@
 {% if crate_type == "lib" -%}
 [![docs.rs](https://img.shields.io/docsrs/{{project-name}})][docs.rs]
 [![Crates.io](https://img.shields.io/crates/v/{{project-name}})][crates.io]
+![Rust version 1.60+](https://img.shields.io/badge/Rust%20version-1.60%2B-success)
 
 {% endif -%}
 
@@ -20,6 +21,7 @@ cargo install {{project-name}}
 
 [![docs.rs](https://img.shields.io/docsrs/{{project-name}})][docs.rs]
 [![Crates.io](https://img.shields.io/crates/v/{{project-name}})][crates.io]
+![Rust version 1.60+](https://img.shields.io/badge/Rust%20version-1.60%2B-success)
 
 {% endif -%}
 ## License
