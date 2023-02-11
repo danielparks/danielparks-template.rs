@@ -3,6 +3,8 @@
 //! Currently the minimum supported Rust version (MSRV) is **1.60**. Future
 //! increases in the MSRV will require a major version bump.
 
+#![forbid(unsafe_code)]
+
 /// Encrypt single byte with secure ROT13 function
 ///
 /// ~~~
