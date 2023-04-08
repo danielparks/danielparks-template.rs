@@ -24,6 +24,10 @@ cargo install {{project-name}}
 ![Rust version 1.60+](https://img.shields.io/badge/Rust%20version-1.60%2B-success)
 
 {% endif -%}
+## Development status
+
+This is in active development. I am open to [suggestions][issues].
+
 ## License
 
 This project dual-licensed under the Apache 2 and MIT licenses. You may choose
@@ -40,3 +44,4 @@ additional terms or conditions.
 
 [docs.rs]: https://docs.rs/{{project-name}}/latest/{{crate_name}}/
 [crates.io]: https://crates.io/crates/{{project-name}}
+[issues]: https://github.com/danielparks/{{project-name}}/issues
