@@ -17,6 +17,24 @@ with [cargo-generate](https://github.com/ashleygwilliams/cargo-generate).
 cargo install {{project-name}}
 ```
 
+If you have [`cargo binstall`][binstall], you can use it to download and install
+a binary:
+
+```sh
+cargo binstall {{project-name}}
+```
+
+Finally, you can download binaries directly from the [GitHub releases
+page][releases]. Just extract the archive and copy the file inside into your
+`$PATH`, e.g. `/usr/local/bin`. The most common ones are:
+
+  * Linux: [x86-64](https://github.com/danielparks/{{project-name}}/releases/latest/download/{{project-name}}-x86_64-unknown-linux-gnu.tar.gz),
+    [ARM](https://github.com/danielparks/{{project-name}}/releases/latest/download/{{project-name}}-aarch64-unknown-linux-musl.tar.gz)
+  * macOS: [Intel](https://github.com/danielparks/{{project-name}}/releases/latest/download/{{project-name}}-x86_64-apple-darwin.tar.gz),
+    [Apple silicon](https://github.com/danielparks/{{project-name}}/releases/latest/download/{{project-name}}-aarch64-apple-darwin.tar.gz)
+  * [Windows on x86-64](https://github.com/danielparks/{{project-name}}/releases/latest/download/{{project-name}}-x86_64-pc-windows-msvc.zip)
+
+
 ## Rust Crate
 
 [![docs.rs](https://img.shields.io/docsrs/{{project-name}})][docs.rs]
@@ -44,4 +62,8 @@ additional terms or conditions.
 
 [docs.rs]: https://docs.rs/{{project-name}}/latest/{{crate_name}}/
 [crates.io]: https://crates.io/crates/{{project-name}}
+{% if crate_type == "bin" -%}
+[binstall]: https://github.com/cargo-bins/cargo-binstall
+[releases]: https://github.com/danielparks/{{project-name}}/releases
+{% endif -%}
 [issues]: https://github.com/danielparks/{{project-name}}/issues
