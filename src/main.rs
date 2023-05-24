@@ -1,4 +1,6 @@
 #![forbid(unsafe_code)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::let_underscore_untyped)]
 
 use anyhow::bail;
 use clap::Parser;
@@ -19,12 +21,13 @@ struct Params {
 fn main() {
     smol::block_on(async {
         if let Err(error) = cli(Params::parse()).await {
-            eprintln!("Error: {:#}", error);
+            eprintln!("Error: {error:#}");
             exit(1);
         }
-    })
+    });
 }
 
+#[allow(clippy::unused_async)]
 async fn cli(params: Params) -> anyhow::Result<()> {
     let filter = match params.verbose {
         4.. => bail!("-v is only allowed up to 3 times."),

@@ -4,6 +4,9 @@
 //! increases in the MSRV will require a major version bump.
 
 #![forbid(unsafe_code)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::let_underscore_untyped)]
+#![warn(missing_docs)]
 
 /// Encrypt single byte with secure ROT13 function
 ///
@@ -11,10 +14,11 @@
 /// use {{crate_name}}::rot13_u8;
 /// assert_eq!(rot13_u8(b'a'), b'n')
 /// ~~~
+#[must_use]
 pub fn rot13_u8(c: u8) -> u8 {
-    if (b'a'..=b'z').contains(&c) {
+    if c.is_ascii_lowercase() {
         ((c - b'a') + 13) % 26 + b'a'
-    } else if (b'A'..=b'Z').contains(&c) {
+    } else if c.is_ascii_uppercase() {
         ((c - b'A') + 13) % 26 + b'A'
     } else {
         c
@@ -27,6 +31,14 @@ pub fn rot13_u8(c: u8) -> u8 {
 /// use {{crate_name}}::rot13;
 /// assert_eq!(rot13("super secure"), "fhcre frpher")
 /// ~~~
+///
+/// # Panics
+///
+/// This could panic if it can’t allocate memory.
+///
+/// Strictly speaking, it could panic when converting back to UTF-8, but that
+/// won’t happen because ROT13 only operates on ASCII bytes.
+#[must_use]
 pub fn rot13(source: &str) -> String {
     let mut buffer: Vec<u8> = Vec::with_capacity(source.len());
     for c in source.bytes() {
