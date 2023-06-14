@@ -1,6 +1,9 @@
+//! {{project-name}} executable.
+
 #![forbid(unsafe_code)]
 #![warn(clippy::pedantic)]
 #![allow(clippy::let_underscore_untyped, clippy::map_unwrap_or)]
+#![warn(missing_docs)]
 
 use anyhow::bail;
 use clap::Parser;
@@ -10,6 +13,7 @@ use simplelog::{
 };
 use std::process::exit;
 
+/// Parameters to configure executable.
 #[derive(Debug, clap::Parser)]
 #[clap(version, about)]
 struct Params {
@@ -27,6 +31,7 @@ fn main() {
     });
 }
 
+/// Set up and run executable.
 #[allow(clippy::unused_async)]
 async fn cli(params: Params) -> anyhow::Result<()> {
     let filter = match params.verbose {
@@ -59,12 +64,13 @@ async fn cli(params: Params) -> anyhow::Result<()> {
     Ok(())
 }
 
-// Using `Box` isn’t our decision here.
-#[allow(clippy::unnecessary_box_returns)]
+/// Convenience function to make creating [`TermLogger`]s clearer.
+#[allow(clippy::unnecessary_box_returns)] // Using `Box` isn’t our decision.
 fn new_term_logger(level: LevelFilter, config: Config) -> Box<TermLogger> {
     TermLogger::new(level, config, TerminalMode::Mixed, ColorChoice::Auto)
 }
 
+/// Convenience function to make creating [`ConfigBuilder`]s clearer.
 fn new_logger_config() -> ConfigBuilder {
     let mut builder = ConfigBuilder::new();
     builder.set_target_level(LevelFilter::Error);
