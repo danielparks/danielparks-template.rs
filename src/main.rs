@@ -59,6 +59,8 @@ async fn cli(params: Params) -> anyhow::Result<()> {
     Ok(())
 }
 
+// Using `Box` isn’t our decision here.
+#[allow(clippy::unnecessary_box_returns)]
 fn new_term_logger(level: LevelFilter, config: Config) -> Box<TermLogger> {
     TermLogger::new(level, config, TerminalMode::Mixed, ColorChoice::Auto)
 }
