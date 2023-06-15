@@ -1,8 +1,12 @@
 #![feature(test)]
 #![forbid(unsafe_code)]
 #![warn(clippy::pedantic)]
-#![allow(clippy::let_underscore_untyped, clippy::map_unwrap_or)]
-#![warn(missing_docs)]
+#![allow(
+    clippy::let_underscore_untyped,
+    clippy::manual_string_new,
+    clippy::map_unwrap_or
+)]
+#![warn(missing_docs, clippy::missing_docs_in_private_items)]
 
 extern crate test;
 
