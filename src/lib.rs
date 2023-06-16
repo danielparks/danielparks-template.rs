@@ -4,13 +4,16 @@
 //! increases in the MSRV will require a major version bump.
 
 #![forbid(unsafe_code)]
-#![warn(clippy::pedantic)]
+#![warn(clippy::nursery, clippy::pedantic)]
 #![allow(
     clippy::let_underscore_untyped,
-    clippy::manual_string_new,
-    clippy::map_unwrap_or
+    clippy::map_unwrap_or,
+    clippy::module_name_repetitions
 )]
+// Require docs on everything
 #![warn(missing_docs, clippy::missing_docs_in_private_items)]
+// Other restriction lints
+#![warn(clippy::arithmetic_side_effects)]
 
 /// Encrypt single byte with secure ROT13 function
 ///
@@ -19,7 +22,9 @@
 /// assert_eq!(rot13_u8(b'a'), b'n')
 /// ~~~
 #[must_use]
-pub fn rot13_u8(c: u8) -> u8 {
+pub const fn rot13_u8(c: u8) -> u8 {
+    // The formulas below will never over or underflow.
+    #![allow(clippy::arithmetic_side_effects)]
     if c.is_ascii_lowercase() {
         ((c - b'a') + 13) % 26 + b'a'
     } else if c.is_ascii_uppercase() {
