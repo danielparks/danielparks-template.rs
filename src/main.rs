@@ -4,6 +4,7 @@
 #![warn(clippy::nursery, clippy::pedantic)]
 #![allow(
     clippy::let_underscore_untyped,
+    clippy::manual_string_new,
     clippy::map_unwrap_or,
     clippy::module_name_repetitions
 )]
