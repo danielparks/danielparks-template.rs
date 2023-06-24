@@ -1,6 +1,6 @@
 [template]
 cargo_generate_version = ">0.9.0"
-ignore = [ "test-template.zsh" ]
+ignore = [ "test-template.zsh", "test-automated.zsh" ]
 
 [conditional.'crate_type == "lib"']
 ignore = [ "src/main.rs" ]
