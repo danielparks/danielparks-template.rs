@@ -18,9 +18,10 @@ for kind in bin lib ; do
 		mkdir foo-$kind
 		cd foo-$kind
 		set -x
+		export RUSTFLAGS='-D warnings'
 		cargo generate --init --path "$TEMPLATE_DIR" --name foo --$kind --silent
 		cargo fmt --check
-		cargo +nightly clippy --all-features --all-targets --quiet -- -D warnings
+		cargo lints clippy --all-targets --all-features --quiet
 		cargo test --all-features --quiet
 	)
 done

@@ -3,18 +3,9 @@
 //! Currently the minimum supported Rust version (MSRV) is **1.60**. Future
 //! increases in the MSRV will require a major version bump.
 
+// Most lint configuration is in lints.toml, but that isn’t supported by
+// cargo-geiger, and it only supports deny, not forbid.
 #![forbid(unsafe_code)]
-#![warn(clippy::nursery, clippy::pedantic)]
-#![allow(
-    clippy::let_underscore_untyped,
-    clippy::manual_string_new,
-    clippy::map_unwrap_or,
-    clippy::module_name_repetitions
-)]
-// Require docs on everything
-#![warn(missing_docs, clippy::missing_docs_in_private_items)]
-// Other restriction lints
-#![warn(clippy::arithmetic_side_effects)]
 
 /// Encrypt single byte with secure ROT13 function
 ///
