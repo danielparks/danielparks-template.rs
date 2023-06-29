@@ -22,6 +22,7 @@ for kind in bin lib ; do
 		cargo generate --init --path "$TEMPLATE_DIR" --name foo --$kind --silent
 		cargo fmt --check
 		cargo lints clippy --all-targets --all-features --quiet
+		cargo deny --all-features check
 		cargo test --all-features --quiet
 	)
 done
