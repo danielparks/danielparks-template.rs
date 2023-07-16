@@ -8,7 +8,7 @@ use simplelog::{
     TerminalMode,
 };
 use std::io::{self, Write};
-use std::process;
+use std::process::ExitCode;
 use termcolor::{Color, ColorSpec, StandardStream, WriteColor};
 
 /// Parameters to configure executable.
@@ -82,17 +82,15 @@ impl From<ColorChoice> for termcolor::ColorChoice {
 /// Wrapper to handle errors.
 ///
 /// See [`cli()`].
-fn main() {
+fn main() -> ExitCode {
     let params = Params::parse();
-    process::exit(smol::block_on(async { cli(&params).await }).unwrap_or_else(
-        |error| {
-            let mut err = params.err_stream();
-            err.set_color(&error_color()).unwrap();
-            writeln!(err, "Error: {error:#}").unwrap();
-            err.reset().unwrap();
-            1
-        },
-    ));
+    smol::block_on(async { cli(&params).await }).unwrap_or_else(|error| {
+        let mut err = params.err_stream();
+        err.set_color(&error_color()).unwrap();
+        writeln!(err, "Error: {error:#}").unwrap();
+        err.reset().unwrap();
+        ExitCode::FAILURE
+    })
 }
 
 /// Do the actual work.
@@ -104,7 +102,7 @@ fn main() {
 /// This returns any errors encountered during the run so that they can be
 /// outputted nicely in [`main()`].
 #[allow(clippy::unused_async)]
-async fn cli(params: &Params) -> anyhow::Result<i32> {
+async fn cli(params: &Params) -> anyhow::Result<ExitCode> {
     let filter = match params.verbose {
         4.. => bail!("-v is only allowed up to 3 times."),
         3 => LevelFilter::Trace,
@@ -132,9 +130,9 @@ async fn cli(params: &Params) -> anyhow::Result<i32> {
     ])
     .unwrap();
 
-    params.out_stream().write_all(b"Hello")?;
+    params.out_stream().write_all(b"Hello\n")?;
 
-    Ok(0)
+    Ok(ExitCode::SUCCESS)
 }
 
 /// Convenience function to make creating [`TermLogger`]s clearer.

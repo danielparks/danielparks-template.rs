@@ -13,7 +13,7 @@ keywords = []
 categories = [] # https://crates.io/category_slugs
 license = "MIT OR Apache-2.0"
 edition = "2021"
-rust-version = "1.60"
+rust-version = {% if crate_type == "bin" %}"1.61"{% else %}"1.60"{% endif %}
 
 {% if crate_type == "bin" -%}
 [dependencies]
