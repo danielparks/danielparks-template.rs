@@ -9,6 +9,7 @@ repository = "https://github.com/danielparks/{{project-name}}"
 documentation = "https://github.com/danielparks/{{project-name}}"
 {% endif -%}
 readme = "README.md"
+exclude = [".*", "/release.sh"]
 keywords = []
 categories = [] # https://crates.io/category_slugs
 license = "MIT OR Apache-2.0"
