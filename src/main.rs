@@ -84,7 +84,7 @@ impl From<ColorChoice> for termcolor::ColorChoice {
 /// See [`cli()`].
 fn main() -> ExitCode {
     let params = Params::parse();
-    smol::block_on(async { cli(&params).await }).unwrap_or_else(|error| {
+    cli(&params).unwrap_or_else(|error| {
         let mut err = params.err_stream();
         err.set_color(&error_color()).unwrap();
         writeln!(err, "Error: {error:#}").unwrap();
@@ -101,8 +101,7 @@ fn main() -> ExitCode {
 ///
 /// This returns any errors encountered during the run so that they can be
 /// outputted nicely in [`main()`].
-#[allow(clippy::unused_async)]
-async fn cli(params: &Params) -> anyhow::Result<ExitCode> {
+fn cli(params: &Params) -> anyhow::Result<ExitCode> {
     let filter = match params.verbose {
         4.. => bail!("-v is only allowed up to 3 times."),
         3 => LevelFilter::Trace,
