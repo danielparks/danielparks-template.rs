@@ -2,12 +2,11 @@
 
 use anyhow::bail;
 use clap::Parser;
-use is_terminal::IsTerminal;
 use simplelog::{
     CombinedLogger, Config, ConfigBuilder, LevelFilter, TermLogger,
     TerminalMode,
 };
-use std::io::{self, Write};
+use std::io::{self, IsTerminal, Write};
 use std::process::ExitCode;
 use termcolor::{Color, ColorSpec, StandardStream, WriteColor};
 
