@@ -85,10 +85,10 @@ impl From<ColorChoice> for termcolor::ColorChoice {
 fn main() -> ExitCode {
     let params = Params::parse();
     cli(&params).unwrap_or_else(|error| {
-        let mut err = params.err_stream();
-        err.set_color(&error_color()).unwrap();
-        writeln!(err, "Error: {error:#}").unwrap();
-        err.reset().unwrap();
+        let mut err_out = params.err_stream();
+        err_out.set_color(&error_color()).unwrap();
+        writeln!(err_out, "Error: {error:#}").unwrap();
+        err_out.reset().unwrap();
         ExitCode::FAILURE
     })
 }
