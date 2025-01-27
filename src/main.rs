@@ -14,7 +14,7 @@ use params::{Params, Parser};
 fn main() -> ExitCode {
     let params = Params::parse();
     cli(&params).unwrap_or_else(|error| {
-        params.warn(format!("Error: {error:#}")).unwrap();
+        params.warn(format!("Error: {error:#}\n")).unwrap();
         ExitCode::FAILURE
     })
 }
