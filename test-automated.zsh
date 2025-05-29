@@ -13,7 +13,7 @@ clean-up () {
 
 trap clean-up EXIT
 
-for kind in bin lib ; do
+for kind in lib bin ; do
 	(
 		mkdir foo-$kind
 		cd foo-$kind
@@ -26,3 +26,10 @@ for kind in bin lib ; do
 		cargo test --all-features --quiet
 	)
 done
+
+# Actually run executable.
+(
+	cd foo-bin
+	set -x
+	cargo run --quiet -- -vvv
+)
