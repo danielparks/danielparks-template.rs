@@ -13,7 +13,8 @@ clean-up () {
 
 trap clean-up EXIT
 
-for kind in lib bin ; do
+default_kinds=(lib bin)
+for kind in ${*:-$default_kinds} ; do
 	(
 		mkdir foo-$kind
 		cd foo-$kind
@@ -24,12 +25,8 @@ for kind in lib bin ; do
 		cargo clippy --all-targets --all-features --quiet
 		cargo deny --all-features check
 		cargo test --all-features --quiet
+		if [[ $kind == "bin" ]] ; then
+			cargo run --quiet -- -vvv
+		fi
 	)
 done
-
-# Actually run executable.
-(
-	cd foo-bin
-	set -x
-	cargo run --quiet -- -vvv
-)
