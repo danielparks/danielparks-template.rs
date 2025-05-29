@@ -31,6 +31,7 @@ fn cli(params: &Params) -> anyhow::Result<ExitCode> {
     logging::init(params.verbose)?;
 
     params.out_stream().write_all(b"Hello\n")?;
+    tracing::trace!("about to exit");
 
     Ok(ExitCode::SUCCESS)
 }
