@@ -19,16 +19,15 @@ rust-version = "1.85"
 {% else -%}
 edition = "2021"
 rust-version = "1.65"
-{% endif -%}
-
-{% if crate_type == "bin" -%}
+{% endif %}
 [dependencies]
+{% if crate_type == "bin" -%}
 anyhow = "1.0.95"
 clap = { version = "4.5.27", features = ["derive"] }
 termcolor = "1.4.1"
 tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = ["chrono"] }
-{% else -%}
+{% else %}
 [dev-dependencies]
 assert2 = "0.3.15"
 criterion = "0.5.1"
