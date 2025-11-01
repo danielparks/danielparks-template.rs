@@ -57,9 +57,10 @@ impl Params {
 }
 
 /// Whether or not to output in color
-#[derive(Clone, Copy, Debug, Eq, PartialEq, clap::ValueEnum)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, clap::ValueEnum)]
 pub enum ColorChoice {
     /// Output in color when running in a terminal that supports it
+    #[default]
     Auto,
 
     /// Always output in color
@@ -67,12 +68,6 @@ pub enum ColorChoice {
 
     /// Never output in color
     Never,
-}
-
-impl Default for ColorChoice {
-    fn default() -> Self {
-        Self::Auto
-    }
 }
 
 impl From<ColorChoice> for termcolor::ColorChoice {
