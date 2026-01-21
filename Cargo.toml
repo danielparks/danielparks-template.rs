@@ -15,7 +15,7 @@ categories = [] # https://crates.io/category_slugs
 license = "MIT OR Apache-2.0"
 {% if crate_type == "bin" -%}
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.92"
 {% else -%}
 edition = "2021"
 rust-version = "1.65"
