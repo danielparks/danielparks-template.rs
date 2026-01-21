@@ -3,7 +3,7 @@ cargo_generate_version = ">0.9.0"
 ignore = [ "test-template.zsh", "test-automated.zsh" ]
 
 [conditional.'crate_type == "lib"']
-ignore = [ "src/main.rs", "src/logging.rs", "src/params.rs" ]
+ignore = [ "src/main.rs", "src/logging.rs", "src/params.rs", "target" ]
 
 [conditional.'crate_type == "bin"']
-ignore = [ "src/lib.rs", "benches" ]
+ignore = [ "src/lib.rs", "benches", "target" ]
