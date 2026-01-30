@@ -1,0 +1,25 @@
+{% raw -%}
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    # Security updates only:
+    open-pull-requests-limit: 0
+    groups:
+      cargo-dependencies:
+        applies-to: security-updates
+        patterns:
+          - "*"
+{% endraw -%}
