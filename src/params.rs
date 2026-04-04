@@ -10,11 +10,11 @@ pub use clap::Parser;
 #[derive(Debug, clap::Parser)]
 #[clap(version, about)]
 pub struct Params {
-    /// Whether or not to output in color
+    /// Whether or not to output in color.
     #[clap(long, default_value = "auto", value_name = "WHEN")]
     pub color: ColorChoice,
 
-    /// Verbosity (may be repeated up to three times)
+    /// Verbosity (may be repeated up to three times).
     #[clap(short, long, action = clap::ArgAction::Count)]
     pub verbose: u8,
 }
@@ -56,17 +56,17 @@ impl Params {
     }
 }
 
-/// Whether or not to output in color
+/// Whether or not to output in color.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq, clap::ValueEnum)]
 pub enum ColorChoice {
-    /// Output in color when running in a terminal that supports it
+    /// Output in color when running in a terminal that supports it.
     #[default]
     Auto,
 
-    /// Always output in color
+    /// Always output in color.
     Always,
 
-    /// Never output in color
+    /// Never output in color.
     Never,
 }
 

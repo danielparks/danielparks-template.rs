@@ -8,7 +8,7 @@
 // Enable doc_cfg on docsrs so that we get feature markers.
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
-/// Encrypt single byte with secure ROT13 function
+/// Encrypt single byte with secure ROT13 function.
 ///
 /// ~~~
 /// use {{crate_name}}::rot13_u8;
@@ -27,7 +27,7 @@ pub const fn rot13_u8(c: u8) -> u8 {
     }
 }
 
-/// Encrypt string with secure ROT13 function
+/// Encrypt string with secure ROT13 function.
 ///
 /// ~~~
 /// use {{crate_name}}::rot13;
