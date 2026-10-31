@@ -13,6 +13,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 env:
   CARGO_INCREMENTAL: 0
   CARGO_NET_GIT_FETCH_WITH_CLI: true
@@ -29,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      contents: write # To create release?
+      contents: write # To create release
     steps:
       - uses: danielparks/github-actions/create-release@2f6c98c73f0a8130d737500b59a0fddf749b484d # v1.1.1
         with:
@@ -44,7 +48,7 @@ jobs:
       - create-release
     timeout-minutes: 60
     permissions:
-      contents: write
+      contents: write # To upload artifacts to release
     strategy:
       matrix:
         include:
@@ -71,7 +75,7 @@ jobs:
           - target: s390x-unknown-linux-gnu
     runs-on: ${{ matrix.os || 'ubuntu-latest' }}
     steps:
-      - uses: danielparks/github-actions/create-release-artifacts@e6897e1bad61baaecaf6683db8a69747ddcf40f1 # v1.0.0
+      - uses: danielparks/github-actions/create-release-artifacts@2f6c98c73f0a8130d737500b59a0fddf749b484d # v1.1.1
         with:
           target: ${{ matrix.target }}
           token: ${{ secrets.GITHUB_TOKEN }}
