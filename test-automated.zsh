@@ -21,7 +21,7 @@ for kind in ${*:-$default_kinds} ; do
 		set -x
 		export RUSTFLAGS='-D warnings'
 		cargo generate --init --path "$TEMPLATE_DIR" --name foo --$kind --silent
-		cargo fmt --check
+		cargo +nightly fmt --check
 		cargo clippy --all-targets --all-features --quiet
 		cargo deny --all-features check
 		cargo test --all-features --quiet

@@ -1,37 +1,54 @@
 {% raw -%}
+exclude: |
+  (?x)(
+    ^target/|
+  )
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
         args: ["--maxkb=1024"]
+        priority: 0
       - id: check-case-conflict
+        priority: 0
       - id: check-executables-have-shebangs
+        priority: 0
       - id: check-json
+        priority: 0
       - id: check-merge-conflict
+        priority: 0
       - id: check-shebang-scripts-are-executable
+        priority: 0
       - id: check-symlinks
+        priority: 0
       - id: check-toml
+        priority: 0
       - id: check-vcs-permalinks
+        priority: 0
       - id: check-xml
+        priority: 0
       - id: check-yaml
+        priority: 0
       - id: detect-private-key
+        priority: 0
       - id: mixed-line-ending
         args: ["--fix=no"]
-        exclude: "^target/"
+        priority: 0
       - id: no-commit-to-branch
+        priority: 0
   - repo: https://github.com/crate-ci/typos
-    rev: v1.51.1
+    rev: v1.52.2
     hooks:
       - id: typos
         args: []
-        exclude: "^target/"
+        priority: 0
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.31.1
+    rev: v1.32.0
     hooks:
       - id: zizmor
         args:
-          - "--no-progress" # https://github.com/zizmorcore/zizmor/issues/582
           - "--persona=pedantic"
   - repo: local
     hooks:
@@ -50,7 +67,7 @@ repos:
       - id: cargo fmt
         name: cargo fmt
         language: system
-        entry: cargo fmt --check
+        entry: cargo +nightly fmt --check
         files: (\.rs|rustfmt\.toml)$
         pass_filenames: false
 {% endraw -%}

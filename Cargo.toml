@@ -3,11 +3,7 @@ name = "{{project-name}}"
 version = "0.1.0"
 authors = ["Daniel Parks <oss-{{project-name}}@demonhorse.org>"]
 description = ""
-homepage = "https://github.com/danielparks/{{project-name}}"
 repository = "https://github.com/danielparks/{{project-name}}"
-{% if crate_type == "bin" -%}
-documentation = "https://github.com/danielparks/{{project-name}}"
-{% endif -%}
 readme = "README.md"
 exclude = [".*", "/release.sh"]
 keywords = []
@@ -26,23 +22,24 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 {% if crate_type == "bin" -%}
-anyhow = "1.0.95"
-clap = { version = "4.5.27", features = ["derive"] }
+anyhow = "1.0.104"
+clap = { version = "4.6.9", features = ["derive"] }
 termcolor = "1.4.1"
-tracing = "0.1.41"
-tracing-subscriber = { version = "0.3.19", features = ["chrono"] }
-
-[profile.release]
-codegen-units = 1
-lto = true
-{% else %}
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["chrono"] }
+{% endif %}
 [dev-dependencies]
+{% if crate_type == "lib" -%}
 assert2 = "0.3.15"
 criterion = "0.5.1"
 
 [[bench]]
 name = "general"
 harness = false
+{% else %}
+[profile.release]
+codegen-units = 1
+lto = true
 {% endif %}
 [lints]
 workspace = true
@@ -99,3 +96,4 @@ unnecessary_debug_formatting = "allow" # display() doesn’t escape invalid char
 
 # Nursery exceptions
 option_if_let_else = "allow"
+empty_enums = "allow" # Requires MSRV of 1.100 for ! type
