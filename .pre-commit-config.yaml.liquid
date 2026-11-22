@@ -36,8 +36,9 @@ repos:
       - id: mixed-line-ending
         args: ["--fix=no"]
         priority: 0
-      - id: no-commit-to-branch
-        priority: 0
+      # Initial development can go on main
+      # - id: no-commit-to-branch
+      #   priority: 0
   - repo: https://github.com/crate-ci/typos
     rev: v1.52.2
     hooks:
